@@ -38,10 +38,6 @@ app.disable('x-powered-by');
 
 var router = express.Router(); 
 
-router.get('/shop/confirmation', function(req, res, next){
-  res.render('shop_confirmation', {base_url: '', is_production: is_production, order: req.query.ordernumber || '00000', cancel: (req.query.a == 'cancel') ? true : false});
-});
-
 router.get('*', function(req, res, next){
 	res.render('index', {base_url: '', is_production: is_production});
 });

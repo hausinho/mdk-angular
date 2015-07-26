@@ -1,7 +1,5 @@
 // var APIURL = (location.hostname === 'localhost') ? 'http://localhost:2100' : 'https://devapi.musik.dk';
 var APIURL = 'https://api.musik.dk';
-// var APIURL = 'https://devapi.musik.dk';
-// var APIURL = 'http://localhost:2100';
 
 angular.module('app', [
     'ui.router', 
