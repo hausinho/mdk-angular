@@ -1,0 +1,20 @@
+<div class="mfp-container mfp-s-ready mfp-inline-holder">
+	<div class="mfp-content">
+		<div id="loginbox" class="white-popup">
+			<section class="loginwrap">
+				<div class="actionlogin">
+					<h2>Log ind</h2>
+				</div>
+				<div class="ipno">
+					<button class="bigbtn btnfacebook" onclick="hello('facebook').login( {scope: 'email, publish_actions, user_likes' } );">Forbind med Facebook</button><br><br>
+					<button class="btngoogle" onclick="hello('google').login({scope: 'email'});">Forbind med Google</button>
+				</div>
+				<div id="pterms" class="tc ip">
+					<h3>Ved at oprette en profil accepterer du vores <a target="_blank" href="https://musikdk.zendesk.com/hc/da/articles/202294351">vilkår</a></h3>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div class="mfp-preloader">Loading...</div>
+</div>
+<button title="Close (Esc)" type="button" class="mfp-close" ng-click="close(false)" data-dismiss="modal">×</button>

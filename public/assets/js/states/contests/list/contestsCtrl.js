@@ -1,0 +1,16 @@
+angular.module('app.contests', [])
+.controller('contestsListMainCtrl', ['$scope', 'contests', '$sce', function($scope, contests, $sce){
+
+	var data = contests.data;
+		
+	$scope.contests = {};
+	
+	// Display a random contest in the top
+	$scope.contests.recommend = contests.data[Math.floor(Math.random() * contests.data.length)];	
+	
+	$scope.contests.list = contests.data;
+	angular.forEach($scope.contests.list, function(v, i){
+		$scope.contests.list[i].description = $sce.trustAsHtml($scope.contests.list[i].description);
+	});
+
+}])

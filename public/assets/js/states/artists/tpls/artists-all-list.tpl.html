@@ -1,0 +1,63 @@
+
+<span class="font-entypo icon-up fr" aria-hidden="true"></span>
+<section id="cm">
+	<div class="pr">
+		<figure class="ti">
+			<img src="https://static.musik.dk/upload/files/live.jpg"  alt="">
+			<div id="campaignpoll"></div>		
+		</figure>
+		 <div id="nextlive">
+			<span style="border-color: rgba(255,255,255,.8)">
+				<h3 style="color: rgba(255,255,255,.8)">Artister</h3>
+			</span>
+		</div>		
+	</div>
+	<header class="h">
+		<span class="fe i-star hicon" aria-hidden="true"></span>
+		<h2>Find artist alfabetisk</h2>
+	</header>
+	<div class="ip">
+		<ol class="alist">
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: '0-9'})">0-9</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'a'})">A</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'b'})">B</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'c'})">C</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'd'})">D</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'e'})">E</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'f'})">F</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'g'})">G</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'h'})">H</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'i'})">I</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'j'})">J</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'k'})">K</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'l'})">L</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'm'})">M</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'n'})">N</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'o'})">O</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'p'})">P</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'q'})">Q</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'r'})">R</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 's'})">S</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 't'})">T</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'u'})">U</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'v'})">V</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'w'})">W</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'x'})">X</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'y'})">Y</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'z'})">Z</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'æ'})">Æ</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'ø'})">Ø</a></li>
+			<li ui-sref-active="selected"><a ui-sref="artists.list.letter({letter: 'å'})">Å</a></li>				
+		</ol>
+		<div class="ip" ui-view>
+			<ol class="aslist">
+				<li ng-repeat="artist in artists.list">
+					<p>
+						<a href="/{{artist.slug}}">{{artist.name}}</a>
+					</p>
+				</li>
+			</ol>			
+		</div>		
+	</div>
+
+</section>

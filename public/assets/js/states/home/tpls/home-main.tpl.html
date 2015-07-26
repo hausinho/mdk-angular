@@ -1,0 +1,208 @@
+<section id="cm">
+	<div class="pr">
+		<!-- Random Artist -->
+		<div class="pr">
+			<figure class="ti pr">
+				<div>
+				<!-- <div id="burnsbox"> -->
+					<img width="1300" height="541" ng-src="{{home.featured.images.cover}}" alt="{{home.featured.name}}" />		
+				</div>
+				<div class="mhlogo"></div>
+				<figcaption class="metacomp">
+					<h2>MusikDK anbefaler</h2>
+					<h1>{{home.featured.name}}</h1>
+				</figcaption>
+					<a href="/{{slug}}/" class="gotoArtist">
+						<div class="goto"></div>
+					</a>		
+			
+			</figure>
+		</div>
+		<!-- End Random Artist -->
+		<!-- News -->
+		<div>
+			<header class="h rlt">
+				<span class="fe i-open-book hicon" aria-hidden="true"></span>
+				<span>Nyheder</span>
+			</header>
+
+			<div class="ipno pc33 news c pr">
+				<article ng-repeat="new in home.news | limitTo:home.limits.news.showing">
+					<a href="{{new.link}}" target="_blank">
+						<img class="lazyload" ng-src="{{new.thumb}}"  width="100" height="100" alt="{{new.title}}">
+						<h4>{{new.source_name}}</h4>
+						<h2>{{new.title}}</h2>
+
+						<time class="newstime" am-time-ago="new.pubDate" am-preprocess="unix"></time>
+						<span class="fe i-export cicon pa" aria-hidden="true"></span>
+					</a>
+				</article>
+				<button class="btnwhite btnmore btnrss" type="button" ng-click="showMoreItemsOnList('news')">Vis flere nyheder</button>
+			</div>	
+		</div>
+		<!-- End News -->
+		<!-- Contests -->
+		<div>
+			<header class="h">
+				<span class="bluedot" aria-hidden="true">&nbsp;&nbsp;&nbsp;</span>
+				Konkurrencer
+			</header>
+			<div class="ip2 c comp pr">
+				<ul>
+					<li style="height: 200px">
+						<a ui-sref="contests.detail({contest_id: home.contest.contest_id})"> 
+							<div class="fl pr ct_img">
+								<img ng-if="home.contest.artist.thumb" class="lazyload" ng-src="{{home.contest.artist.thumb}}" width="200" height="200" alt="{{home.contest.artist.name}}" />
+								<img ng-if="!home.contest.artist.thumb" class="lazyload" data-src="/assets/images/default_thumb.gif" width="200" height="200" />
+							</div>
+							<div class="ct_cnt">
+								<h2>{{home.contest.title}}</h2>
+								<div class="ct_desc" ng-bind-html="home.contest.description"></div>
+							</div>
+						</a>
+					</li>		
+				</ul>
+			</div>
+			<div class="ip3 compBtnDiv">
+				<a ui-sref="contests.list">
+					<button class="btnblue" type="button">
+						<span style="margin-left:15px">Gå til konkurrencer</span><span class="buttonicon" data-icon="V" aria-hidden="true"></span>
+					</button>
+				</a>
+			</div>	
+		</div>
+		<!-- End Contests -->
+		<!-- Videos -->
+		<div>
+			<header class="h">
+				<span class="fe i-video hicon redtext" aria-hidden="true"></span>
+				Nye videoer
+			</header>
+
+			<div class="ip2 c pc4to3 singleVideos pr">
+				<article class="video" ng-repeat="video in home.videos | limitTo:home.limits.videos.showing">
+					<a class="vidPopup" data-ytid="{{video.youtube_id}}">
+						<img class="lazyload" ng-src="https://i1.ytimg.com/vi/{{video.youtube_id}}/mqdefault.jpg" alt="{{video.title}}">
+						<div class="vidol">
+							<span>AFSPIL</span>
+						</div>
+						<div class="ellipsis">
+							<h2 class="vn">{{video.title}}</h2><br>
+							<h2 class="van">{{video.name}}</h2>
+						</div>
+						<span class="fe i-play cicon" aria-hidden="true"></span>
+					</a>
+				</article>		
+			</div>
+			<div class="ip3 pr">
+				<button class="btnwhite btnmore btnvid" type="button" ng-click="showMoreItemsOnList('videos')">Vis flere videoer</button>
+			</div>
+		</div>
+		<!-- End Videos -->
+		<!-- Genres -->
+		<div class="pr">
+			<header class="h ltr fl">
+				<span class="fe i-star hicon" aria-hidden="true"></span>
+				Artister | Genre
+			</header>
+			<div class="tabs lt clear">
+				<ul class="genresList">
+					<li><a ng-click="showItemsOfList('genre', 'poprock')" class="genre" ng-class="{'selected' : home.genreSelected == 'poprock'}">Pop/Rock</a></li>
+					<li><a ng-click="showItemsOfList('genre', 'alternative')" class="genre" ng-class="{'selected' : home.genreSelected == 'alternative'}">Alternative</a></li>
+					<li><a ng-click="showItemsOfList('genre', 'electronic')" class="genre" ng-class="{'selected' : home.genreSelected == 'electronic'}">Dance/Electro</a></li>
+					<li><a ng-click="showItemsOfList('genre', 'hiphop')" class="genre" ng-class="{'selected' : home.genreSelected == 'hiphop'}">HipHop</a></li>
+					<li><a ng-click="showItemsOfList('genre', 'rnbsoul')" class="genre" ng-class="{'selected' : home.genreSelected == 'rnbsoul'}">Rnb/Soul</a></li>
+					<li><a ng-click="showItemsOfList('genre', 'jazzblues')" class="genre" ng-class="{'selected' : home.genreSelected == 'jazzblues'}">Jazz & Blues</a></li>
+					<li><a ng-click="showItemsOfList('genre', 'world')" class="genre" ng-class="{'selected' : home.genreSelected == 'world'}">World</a></li>
+					<li><a ng-click="showItemsOfList('genre', 'classical')" class="genre" ng-class="{'selected' : home.genreSelected == 'classical'}">Klassisk</a></li>
+				</ul>
+			</div>
+			<div class="ipno c pc4to3 genres pr">
+				<article ng-repeat="artist in home.genre | limitTo:home.limits.genre.showing">
+					<a href="/{{artist.slug}}">
+						<img class="lazyload" ng-src="{{artist.images.thumb}}"  width="302" height="129" alt="{{artist.name}}">
+						<div class="artistol">
+							<span>Se artist</span>
+						</div>
+						<div class="ellipsis">
+							<h2 class="an">{{artist.name}}</h2>
+						</div>
+					</a>
+				</article>
+				<button class="btnwhite btnmore btngenpor" type="button" ng-click="showMoreItemsOnList('genre')">Vis flere artister</button>
+			</div>
+		</div>
+		<!-- end Genres -->
+		<!-- Decades -->
+		<div class="pr">
+			<header class="h ltr fl">
+				<span class="fe i-star hicon" aria-hidden="true"></span>
+				Artister | År
+			</header>
+			<div class="tabs lt">
+				<ul class="decadesList">
+					<li><a ng-click="showItemsOfList('decade', '2010')"  class="decade" ng-class="{'selected' : home.decadeSelected == '2010'}">10'erne</a></li>
+					<li><a ng-click="showItemsOfList('decade', '2000')"  class="decade" ng-class="{'selected' : home.decadeSelected == '2000'}">00'erne</a></li>
+					<li><a ng-click="showItemsOfList('decade', '1990')"  class="decade" ng-class="{'selected' : home.decadeSelected == '1990'}">90'erne</a></li>
+					<li><a ng-click="showItemsOfList('decade', '1980')"  class="decade" ng-class="{'selected' : home.decadeSelected == '1980'}">80'erne</a></li>
+					<li><a ng-click="showItemsOfList('decade', '1970')"  class="decade" ng-class="{'selected' : home.decadeSelected == '1970'}">70'erne</a></li>
+					<li><a ng-click="showItemsOfList('decade', '1960')"  class="decade" ng-class="{'selected' : home.decadeSelected == '1960'}">60'erne</a></li>
+					<li><a ng-click="showItemsOfList('decade', '1950')"  class="decade" ng-class="{'selected' : home.decadeSelected == '1950'}">50'erne</a></li>
+				</ul>
+			</div>
+			<div class="ipno c pc4to3 decades">
+				<article ng-repeat="artist in home.decade | limitTo:home.limits.decade.showing">
+					<a href="/{{artist.slug}}">
+						<img class="lazyload" ng-src="{{artist.images.thumb}}"  width="302" height="129" alt="{{artist.name}}">
+						<div class="artistol">
+							<span>Se artist</span>
+						</div>
+						<div class="ellipsis">
+							<h2 class="an">{{artist.name}}</h2>
+						</div>
+					</a>
+				</article>
+				<button class="btnwhite btnmore btndecades" type="button" ng-click="showMoreItemsOnList('decade')">Vis flere artister</button>
+			</div>
+		</div>
+		<!-- End Decades -->
+		<!-- Concerts -->
+		<div class="pr">
+			<header class="h rlt">
+				<span class="fe i-ticket hicon" aria-hidden="true"></span>
+				Kommende koncerter
+			</header>
+
+			<div class="ip clive pc50list pr">	
+				<ul class="ll">
+					<li class="noc" ng-repeat="concert in home.concerts | limitTo:home.limits.concerts.showing">
+						<div ng-if="concert.delivery_status === 'Cancelled'" class="ribbonWrapRed">
+							<div class="ribbonRed">AFLYST</div>
+						</div>
+						<div ng-if="concert.delivery_status === 'Sold out'" class="ribbonWrapRed">
+							<div class="ribbonRed">UDSOLGT</div>
+						</div>
+						<div class="cimage">
+							<img class="lazyload" ng-src="{{concert.artist.thumb}}"  width="120" height="120" alt="{{concert.name}}">
+							<time datetime="{{concert.date}}">{{concert.date | date:'MMM'}}<span>{{concert.date | date:'dd'}}</span></time>
+						</div> 	
+						<div class="clinfo-front">	
+							<h2>{{concert.artist.name}}</h2>
+							<h3 class="ellipsis">{{concert.venue_name}} ({{concert.venue_city}})</h3>
+							<h5>{{concert.time }}</h5>
+						</div>
+						<a ng-if="concert.delivery_status === 'Normal'" ref="{{concert.deeplink}}" target="_blank"><div class="ticgreen"></div></a>
+						<a ng-if="concert.delivery_status === 'Few'" href="{{concert.deeplink}}" target="_blank"><div class="ticyellow"></div></a>
+						<a ng-if="concert.delivery_status === 'Waiting list'"  href="{{concert.deeplink}}" target="_blank"><div class="ticredwait"></div></a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="ip3">
+				<button class="btnwhite btnmore btnlive" type="button" ng-click="showMoreItemsOnList('concerts')">Vis flere koncerter</button>
+			</div>		
+		</div>
+	</div>	
+</section>
+<!-- End concerts -->
+

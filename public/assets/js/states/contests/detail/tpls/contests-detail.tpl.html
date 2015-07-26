@@ -1,0 +1,116 @@
+<div id="cw">
+	<section id="cm">
+		<div class="questionDetails_sub">
+			<!-- Cover -->
+			<figure class="ti tc pr">
+				<img width="1300" height="541" ng-if="contest.artist.images.cover" ng-src="{{contest.artist.images.cover}}" style="border-top:none" alt="{{contest.artist.formated_name}}">
+				<img width="1300" height="541" ng-if="!contest.artist.images.cover" ng-src="/assets/images/default_cover.gif" />
+				<div class="mhlogo"></div>
+				<!-- Text Contest -->
+				<div ng-if="contest.type === 'text'">
+					<!-- Countdown -->
+					<ul class="countdown">
+						<li>
+							<span class="days"></span>
+							<p class="timeRefDays"></p>
+						</li>
+						<li>
+							<span class="hours"></span>
+							<p class="timeRefHours"></p>
+						</li>
+						<li>
+							<span class="minutes"></span>
+							<p class="timeRefMinutes"></p>
+						</li>
+						<li>
+							<span class="seconds"></span>
+							<p class="timeRefSeconds"></p>
+						</li>
+					</ul>	
+					<!-- End countdown -->
+					<figcaption class="meta" style="border-right:none">
+						<h2 style="font-size:35px" class="contestTxt">{{contest.title}}</h2>
+					</figcaption>
+				</div>
+				<!-- End Text contest -->
+				<!-- Image contest -->
+				<div ng-if="contest.type === 'image'">
+					<div id="fpol"></div>
+					<span id="fpart">
+						<h1 id="fpartdec" href="#">{{contest.title}}</h1>
+						<form id="imageContestForm" method="" action="">
+							<input ng-if="!contest.user_has_uploaded" type="hidden" uploadcare-widget name="picture" role="uploadcare-uploader" data-images-only data-crop="1:1" data-public-key="5aa073daf1d075def0a0" />	
+						</form>
+					</span>
+				</div>
+				<!-- End Image contest -->
+			</figure>
+			<!-- End cover -->
+			<!-- ADMIN NUMBER OF PARTICIPATORS -->
+			<div id="admincompinfo" ng-if="contest.usersParticipating">
+				<h3>{{contest.usersParticipating}}</h3>
+				<h6>deltager</h6>
+			</div>
+			<!-- END ADMIN NUMBER OF PARTICIPATORS -->
+			<!-- Text contest -->
+			<div ng-if="contest.type === 'text'">
+				<div class="ip-large">
+					<div class="pure50">
+						<h2>Om konkurrencen:</h2><br><br>
+						<span ng-bind-html="contest.description"></span>
+					</div>
+					<div class="pure25">
+						<h2>Spørgsmål:</h2><br><br>
+						<p>{{contest.question.title}}</p>
+					</div>
+					<div class="pure25">
+						<h2>Vælg dit svar:</h2><br><br>
+						<button ng-repeat="answer in contest.question.answers" class="btnwhite" ng-click="clickedAnswer(answer)" ng-class="{'btncomp' : contest.question.answered.answer_id === answer.answer_id}">{{answer.answer}}</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Image Contest -->
+			<div ng-if="contest.type === 'image'">
+				<section class="ip-large">			
+					<div id="compmeta" ng-bind-html="contest.description">		
+					</div>
+				</section>	
+				<header class="h">Bud</header>
+				<div ng-if="contest.contest_images.length > 0" class="ip2 c cblue pc4to3">
+					<div id="image-list-wrapper" class="pr">
+						<article ng-repeat="image in contest.contest_images">
+							<a class="comppop">
+								<div class="compuploader">
+									<img data-src="{{image.user.avatar}}" src="{{image.user.avatar}}" alt="{{image.user.name}}">
+								</div>
+								<img id="imgupload" data-src="{{image.image_url_thumb}}" src="{{image.image_url_thumb}}" alt="{{image.user.name}}">
+								<div class="compol">
+									<span>SE MERE</span>
+								</div>
+								<div class="compcard">
+									<div class="cctxtwrap">
+										<fb:like id="fb-share" ng-href="{{image.url}}" data-width="250" data-layout="button_count" data-action="recommend" data-show-faces="true" data-share="true"></fb:like>
+									</div>
+								</div>
+							</a>
+						</article>
+					</div>
+					<div class="ip3" style="padding-left:0px;">
+						<button class="btnmoreuploads">Vis flere billeder</button>
+					</div>
+				</div>	
+				<div ng-if="contest.contest_images.length == 0" class="ip2 c comp">
+					<div class="ipemptystate">
+						<h6>Vil du være den første?</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ipno compfooter">
+			<a ui-sref="artist.main({artist_slug:contest.artist.slug})" class="gotoArtist">
+				<button class="btnblue">Gå til <span> {{contest.artist.formated_name}}</span> på <span>MusikDK</span></button>
+			</a>	
+		</div>
+	</section>
+</div>

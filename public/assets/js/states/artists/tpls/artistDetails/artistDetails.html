@@ -1,0 +1,214 @@
+<div id="accw">
+	<section id="cm">
+		<div class="pr">
+			<div id="acmenuwrap">
+				<div class="fr">
+					<img id="acmlogo" src="https://static.musik.dk/upload/files/logodark.svgz">
+				</div>
+				<ul id="acmenu">
+					<li id="acnavimg">
+						<a href="">
+							<img width="60" ng-if="artistDetails.artistcover" ng-src="{{artistDetails.artistcover}}" alt="{{name}}" />
+							<img width="60" ng-if="!artistDetails.artistcover" ng-src="/demobilleder/hlowq.jpg" />
+						</a>
+					</li>
+					<li id="acsep"></li>
+					<li>
+						<a ui-sref="">
+							<h2>Oversigt</h2>
+						</a>
+					</li>
+					<li ng-if="artistDetails.releases">
+						<a href="">
+							<h2>Udgivelser</h2>
+						</a>
+					</li>
+					<li ng-if="artistDetails.videos">
+						<a ui-sref="artist.main.videos">
+							<h2>Videoer</h2>
+						</a>
+					</li>
+					<li ng-if="artistDetails.contests">
+						<a href="">
+							<h2>Konkurrence</h2>
+						</a>
+					</li>					
+					<li ng-if="artistDetails.merchandise">
+						<a href="">
+							<h2>Merchandise</h2>
+						</a>
+					</li>
+					<li ng-if="artistDetails.concerts">
+						<a ui-sref="">
+							<h2>Koncerter</h2>
+						</a>
+					</li>
+					<li ng-if="artistDetails.polls">
+						<a href="">
+							<h2>Afstemning</h2>
+						</a>
+					</li>
+					<li ng-if="artistDetails.quizzes">
+						<a href="">
+							<h2>Quiz</h2>
+						</a>
+					</li>					
+				</ul>
+
+			</div>
+		</div>
+		<div class="artistChannelDiv">
+			<figure class="ti pr">
+				<div id="burnsbox">
+					<img ng-if="artistDetails.artistcover" ng-src="{{artistDetails.artistcover}}" style="border-top:none" alt="{{name}}">
+					<img ng-if="!artistDetails.artistcover" ng-src="/demobilleder/hlowq.jpg" />				
+				</div>
+<!-- 				<div class="contests">
+					<div id="campaigncomp"></div>
+					<img id="camlogo2" src="https://static.musik.dk/upload/files/konkurrence.svgz" alt="MusikDK Konkurrence">
+					<figcaption class="metacamp">
+						<h2></h2>
+					</figcaption>
+					<a href="/konkurrencer/{{contest_id}}">
+						<div class="gotocomp"></div>
+					</a>
+				</div> -->
+
+				<div class="mhlogo"></div>
+				<figcaption class="artistmeta">
+					<h1>{{artistDetails.artistname}}</h1>
+				</figcaption>
+			</figure>
+			<div class="pr">
+				<!-- HØJRE KOLONNE -->
+				<section id="rightSection" class="fr w350">
+<!-- 					<div>
+					<!-- STREAMING SERVICES
+						<header class="h">
+							<span class="fe i-play hicon" aria-hidden="true"></span>
+							<h2>Afspil på</h2>				
+						</header>
+						<div class="ip2"></div>					
+					<!-- STREAMING SERVICES END 
+					</div> -->
+					<div ng-if="artistDetails.biography">
+						<!-- BIOGRAPHY -->
+						<header class="h">
+							<span class="fe i-book hicon" aria-hidden="true"></span>
+							<h2>Biografi</h2>
+						</header>
+						<section class="ip">
+							<div class="artistBio">
+								<p>{{artistDetails.biography}}</p>
+							</div>
+							<br>
+							<p class="infotext floatright">Tekst fra Wikipedia</p>
+						</section>
+						<!-- BIOGRAHY END -->
+					</div>
+					<div ng-if="artistDetails.links">
+						<!-- SOCIAL MEDIA LINKS -->
+						<header class="h">
+							<span class="fe i-export hicon" aria-hidden="true"></span>
+							<h2>Links</h2>
+						</header>
+						<section class="ip4">
+							<ul>
+								<li ng-if="artistDetails.facebook">
+									<a href="{{artistDetails.facebook}}" target="_blank"><i class="fblink roundedcorners"></i></a>								
+								</li>
+								<li ng-if="artistDetails.twitter">
+									<a href="{{artistDetails.twitter}}" target="_blank"><i class="twlink roundedcorners"></i></a>
+								</li>
+								<li ng-if="artistDetails.instagram">
+									<a href="{{artistDetails.instagram}}" target="_blank"><i class="iglink roundedcorners"></i></a>
+								</li>
+								<li ng-if="artistDetails.souncloud">
+									<a href="{{artistDetails.souncloud}}" target="_blank"><i class="sclink roundedcorners"></i></a>
+								</li>
+							</ul>
+						</section>			
+					<!-- SOCIAL MEDIA LINKS END -->					
+					</div>
+				</section>
+				<section id="leftSection" class="mcl mr350">
+					<!-- RSS NEWS -->
+					<div id="rssDiv" class="pr">
+						<header class="h rlt">
+							<span class="fe i-open-book hicon" aria-hidden="true"></span>
+							<h2>Nyheder</h2>
+						</header>
+						<div class="tabs lt">
+							<div class="ipno c news pc50">
+								<article ng-repeat="rss in artistDetails.rss | limitTo:artistDetails.limits.rss.showing">
+									<a href="{{rss.link}}" target="_blank">
+										<img class="lazyload" ng-src="{{rss.source.logo}}" width="100" alt="{{rss.title}}">
+										<h4>{{rss.source.name}}</h4>
+										<h2>{{rss.title}}</h2>
+										<time class="newstime" am-time-ago="rss.pubDate" am-preprocess="unix"></time>
+										<span class="font-entypo icon-export cicon pa" aria-hidden="true"></span>
+									</a>
+								</article>
+								<button class="btnwhite btnmore btnrss" type="button" ng-click="showMoreItemsOnList('rss')">Vis flere nyheder</button>
+							</div>			
+						</div>
+					</div>
+					<!-- RSS NEWS END-->
+					<!-- VIDEOS -->
+					<div class="pr">
+						<header class="h">
+							<span class="fe i-video hicon" aria-hidden="true"></span>
+							<h2>Videoer</h2>
+						</header>
+						<div class="tabs lt">
+							<div class="#1 artistVideos">
+								<div class="ip2 c video pc3to2">
+									<article ng-repeat="videos in artistDetails.videos">
+										<a class="vidPopup" data-ytid="{{videos.ytid}}">
+											<img class="lazyload" ng-src="https://i1.ytimg.com/vi/{{videos.ytid}}/hqdefault.jpg" alt="{{videos.title}}">
+											<div class="vidol">
+												<span>AFSPIL</span>
+											</div>
+											<div class="ellipsis">
+												<h3 class="vn">{{videos.title}}</h3> <br>
+												<h3 class="van"></h3>
+											</div>
+											<span class="fe i-play cicon" aria-hidden="true"></span>
+										</a>
+									</article>	
+								</div>
+							</div>			
+						</div>
+					</div>
+					<!-- VIDEOS END -->					
+					<!-- SOCIAL UPDATES	 -->
+					<div id="socialMediaDiv">
+						<header class="h">
+							<span class="fe i-layout hicon" aria-hidden="true"></span>
+							<h2>Sociale opdateringer</h2>
+						</header>
+						<div id="supmain" class="socialMedia">
+							<ul id="suptiles">
+								<li ng-repeat="feed in artistDetails.socialmedia | limitTo:artistDetails.limits.socialmedia.showing">
+									<a href="{{feed.url}}" target="_blank">
+											 <img ng-src="{{feed.image}}" width="300" />
+										<section class="ip">		
+											<h2></h2>
+											<p>{{feed.content}}</p>
+											<h3>
+												<time class="timeago">
+													<span am-time-ago="feed.pubDate" am-preprocess="unix"></span>
+												</time> |	{{feed.type}}
+											</h3>
+										</section>
+									</a>
+								</li>							
+							</ul>
+						</div>			
+					</div>
+					<!-- SOCIAL UPDATES	END -->					
+				</section>
+			</div>	
+		</div>
+	</section>
+</div>

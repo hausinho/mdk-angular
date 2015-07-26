@@ -1,0 +1,27 @@
+<div id="cw">
+	<section id="cm">
+		<header class="h">
+			<span class="fe i-video hicon redtext" aria-hidden="true"></span>
+				<h2>Nyeste Musik.dk produktioner</h2>
+		</header>
+		<div class="c video pc25 singleVideos">
+			<div class="ip2">
+				<article ng-repeat="video in videos | limitTo:videosLimit">
+					<a class="vidPopup" data-ytid="{{video.video_youtube_id}}">
+						<img class="lazyload" ng-src="https://i1.ytimg.com/vi/{{video.video_youtube_id}}/hqdefault.jpg" alt="{{video.title}}">
+						<div class="vidol">
+							<span>AFSPIL</span>
+						</div>
+						<div class="ellipsis">
+							<h2 class="vn">{{video.video_title | splitStringAndGetPart:'1':'-'}}</h2>
+							<br>
+							<h2 class="van">{{video.video_title | splitStringAndGetPart:'0':'-'}}</h2>
+						</div>
+						<span class="fe i-play cicon" aria-hidden="true"></span>
+					</a>
+				</article>
+				<button class="btnwhite btnmore" ng-click="showMoreVideos()">Vis flere videoer</button>
+			</div>
+		</div>
+	</section>
+</div>

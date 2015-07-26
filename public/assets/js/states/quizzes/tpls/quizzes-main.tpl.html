@@ -1,0 +1,25 @@
+<div id="cw" class="quizDiv">
+	<section id="cm">
+		<figure class="ti pr">
+			<img width="1300" height="541" ng-src="{{featured.artist.artist_cover}}" id="coverbgblur" alt="{{featured.artist.name}}/">
+			<a class="gotoquiz" href="{{featured.artist.slug}}/quiz/{{featured.slug}}"></a>
+			<figcaption class="metacomp2">
+				<h1 class="contestTxt">{{quiz.title}}</h1>
+			</figcaption>
+		</figure>		
+		<div class="pr">		
+			<div class="allQuizzes"><div class="ip2 c comp pc50list">
+			<ul>
+				<li ng-repeat="quiz in quizzes">
+					<a ui-sref="artist.main.quiz({artist_slug:quiz.artist.slug, quiz_slug:quiz.slug})"> 
+						<img ng-src="{{quiz.artist.artist_thumb}}" width="200" alt="">
+						<h2>{{quiz.artist.name}}</h2>
+						<p>{{quiz.description}}</p>
+					</a>
+				</li>
+			</ul>
+			</div>
+			</div>
+		</div>
+	</section>	
+</div>

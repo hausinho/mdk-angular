@@ -1,0 +1,30 @@
+<div class="pr">
+	 <figure class="ti pr">
+			<img class="lazyload" src="https://static.musik.dk/upload/files/live.jpg" alt="{{artistQuizzes.artist.name}} på MusikDK">				
+			<div id="campaignquiz"></div>		
+	 </figure>
+	 <div id="nextlive">
+			<span>
+				  <h3>Hvor godt kender du</h3>
+				  <h2>{{artistQuizzes.artist.name}}&nbsp;?</h2>
+			</span>
+	</div>
+</div>
+
+<header class="h rlt">
+	<span class="fe i-trophy hicon" aria-hidden="true"></span>
+	<h2>Quizzer</h2>
+</header>
+<div class="ip2 c comp pc50list">	
+	<ul>
+		
+		<li ng-repeat="quiz in artistQuizzes.quizzes">
+			<a ui-sref="artist.main.quiz"> 
+			<img ng-src="{{artistQuizzes.artist.images.thumb}}"  width="200" alt="{{artistQuizzes.artist.name}}">
+			<h2>{{quiz.title}}</h2>
+			<p ng-bind-html="quiz.description"></p>
+			</a>
+		</li>	
+
+	</ul>
+</div>

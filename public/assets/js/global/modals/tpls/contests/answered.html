@@ -1,0 +1,11 @@
+<div class="mfp-container mfp-s-ready mfp-inline-holder">
+	<div class="mfp-content">
+		<div id="donepopup" class="white-popup">
+			<div id="compdonepopup">
+				<figure></figure>
+				<a ui-sref="artist.main({artist_slug:data.slug})" ng-click="data.close(false)"><button class="btnblue">Se mere med {{data.formated_name}}</button></a>
+			</div>
+		</div>			
+	</div>
+</div>
+<button title="Close (Esc)" type="button" class="mfp-close" ng-click="data.close(false)" data-dismiss="modal">×</button>

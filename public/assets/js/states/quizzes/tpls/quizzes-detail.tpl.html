@@ -1,0 +1,121 @@
+<div id="cw">
+	<section id="cmslim">
+		<header id="quizheader">	
+			<h1>{{quiz.title}}</h1>
+			<p data-ui-start="hide">{{description}}</p>
+			<div data-finished-battle="hide" data-ui-start="fadeIn" style="display:none;">
+				<article>
+					<h5>Dine point</h5>
+					<h6 class="quiz-score">*</h6>
+				</article>
+				<article ng-if="isContest">
+					<h5>Samlet placering</h5>
+					<h6 class="quiz-rank">*</h6>
+				</article>
+				<article>
+					<h5>Spørgsmål</h5>
+					<h6 class="quiz-position">*</h6>
+				</article>
+			</div>
+		</header>
+		<div data-state="start">
+			<figure class="tc pr">
+				<div id="burnsbox">
+					<img src="{{quiz.artist.images.cover}}" alt="{{quiz.artist.name}}">
+				</div>
+				<div id="quiztitles">
+					<!-- CLICK TO START QUIZ -->
+					<div ng-if="quiz.battle" id="startquiz">KLIK HER FOR AT STARTE IMOD {{battle.user.name}}</div>
+					<div ng-if="!quiz.battle" id="startquiz">KLIK HER FOR AT STARTE</div>
+				</div>
+				<div id="campaignpoll"></div>
+			</figure>
+			<div class="ipno black" id="quizbtnfill">	
+				<div class="tc">
+					<h2 class="whitetext">Slå dine venner</h2>
+					<p class="whitetext">Del din samlede score på Facebook efter quizzen og se om dine venner kan slå dig!</p>
+				</div>
+			</div>
+		</div>
+
+		<div data-state="active" style="display:none;">
+			<figure class="tc pr">
+				<div id="burnsbox">
+					<img src="{{quiz.artist.images.cover}}" alt="{{quiz.artist.name}}">
+				</div>
+				<div id="quiztitles">
+					<ul>
+						<li class="chart" data-percent="100">
+							<span id="quiz-countdown-question">5</span>
+							<span id="quiz-score-counter" ><span>1000</span>POINT</span><canvas height="240" width="240" style="height: 120px; width: 120px;"></canvas>
+						</li>
+					</ul>
+					<h2 id="question">{{quiz.question.question}}</h2>
+				</div>
+				<div id="campaignpoll"></div>
+			</figure>
+			<div class="ipno black" id="d-a-h">
+				<div data-answers>
+					<button ng-repeat="answer in question.answers" class="btngreen" style="min-height:44px;" data-answer-id="{{answer.quiz_answer_id}}"><span>{{answer.title}}</span></button>
+				</div>
+			</div>
+		</div>
+		<div data-state="finished" style="display:none;"> 
+			<figure class="tc pr">
+				<div id="burnsbox">
+					<img src="{{quiz.artist.images.cover}}" alt="{{quiz.artist.name}}">
+				</div>
+				<div id="quiztitles">
+					<div class="tc">
+						<span ng-if="quiz.isContest">
+							<h6>Tak, du fik<span>&nbsp;<span class="quiz-score">0</span> point</span>, du deltager nu i konkurrencen</h6>
+						</span>
+						<span ng-if="!quiz.isContest">
+							<h6>Du fik<span>&nbsp;<span class="quiz-score">0</span> point</span>, hvilket giver en samlet<span>&nbsp;<span class="quiz-rank">0</span> plads</span>!</h6>	
+						</span>
+					</div>	
+				</div>
+				<div id="campaignpoll"></div>
+			</figure>
+			<div class="ipno black" id="quizdone">
+				<div class="tc">
+					<h2 class="whitetext">Er du klogere end dine venner?</h2>
+					<p class="whitetext">Udfordr dine venner i quizzen ved at dele linket på Facebook og find ud af, hvem der løber med håneretten.</p>
+					<div class="pc50" style="overflow: auto">
+						<article><a id="sharefbAll"><button class="btnfacebook2">Inviter alle venner</button></a></article>
+						<article><a id="sharefbFriends"><button class="btnfacebook2">Inviter enkelte venner</button></a></article>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div data-state="finished-battle" style="display:none;">
+			<section id="h2h-status" class="pr">
+				<span data-user-h2h-id="{{battle.user.user_id}}">
+					<div class="hinfo hinfofix">
+						<h2>{{quiz.battle.user.name}}</h2>
+						<h3 id="quizwinner">{{quiz.battle.score}} POINT</h3>
+					</div>
+					<img participant-avatar-big src="{{quiz.battle.user.avatar_large}}" width="120" height="120" alt="{{quiz.battle.user.name}}">
+				</span>
+				<h4>VS</h4>
+				<span data-user-h2h-id="{{quiz.user.user_id}}">
+					<img participant-avatar-big  src="{{quiz.user.avatar_large}}" width="120" height="120" alt="{{quiz.user.name}}">
+					<div class="hinfo2" >
+						<h2>{{quiz.user.name}}</h2>
+						<h3 id="quizlooser"><span class="quiz-score">0</span> POINT</h3>
+					</div>
+				</span>
+			</section>
+			<div class="ipno lightblack" id="quizdone">
+				<div class="tc">
+					<p class="whitetext"><span data-battle-winner></span> slog <span data-battle-loser></span>... Hvor svært kan det være?</p>
+					<a href="/{{artist_slug}}/quiz/{{quiz_slug}}" class="restartQuiz"><button class="btngreen">Prøv quizzen igen</span></button></a>
+					<div class="pc50" style="overflow: auto">
+						<article><a id="sharefbAll"><button class="btnfacebook2">Inviter alle venner</button></a></article>
+						<article><a id="sharefbFriends"><button class="btnfacebook2">Inviter enkelte venner</button></a></article>
+					</div>				
+				</div>
+			</div>
+		</div>	
+	</section>
+</div>

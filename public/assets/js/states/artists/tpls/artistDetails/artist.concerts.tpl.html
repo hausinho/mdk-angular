@@ -1,0 +1,67 @@
+
+		<div class="pr">
+			 <figure class="ti">
+				<img class="lazyload" src="https://static.musik.dk/upload/files/live.jpg" alt=" på MusikDK">				
+			 </figure>
+			 <div id="campaignlive"></div>
+			<div ng-if="artistConcerts.concerts.length" id="nextlive">			
+				<span>
+
+					  <time datetime="">{{artistConcerts.nextConcert.date | amDateFormat:'DD.MM.YY'}}</time>
+					  <h2>{{artistConcerts.nextConcert.venue_name}}</h2>
+					  <h3>{{artistConcerts.nextConcert.venue_city}}</h3>
+
+				</span>
+			</div>			 
+			 <div ng-if="!artistConcerts.concerts.length" id="nextlive">
+				<span>
+					  <h3>Der er ingen kommende koncerter</h3>
+				</span>
+			</div>			 
+
+		</div>
+		<header class="h ltr">
+			<span class="fe i-ticket hicon" aria-hidden="true"></span>
+			<h2>Alle koncerter</h2>
+
+		<div ng-if="!artistConcerts.concerts.length" class="ip">
+			<div class="tc">
+				<span class="fe i-three-dots emptystate-big" aria-hidden="true"></span>
+			</div>
+		</div>		
+
+		<div class="ip2 clive pc50list" ng-if="artistConcerts.concerts.length">		
+			<ul class="ll">
+
+				<li class="noc" ng-repeat="concert in artistConcerts.concerts">
+
+					<div ng-if="concert.delivery_status == 'Cancelled'" class="ribbonWrapRed">
+						<div class="ribbonRed">AFLYST</div>
+					</div>
+
+					<div ng-if="concert.delivery_status == 'Sold Out'" class="ribbonWrapRed">
+						<div class="ribbonRed">UDSOLGT</div>
+					</div>
+					
+					<div class="cimage">
+						<img ng-src="{{artistConcerts.artist.images.thumb}}" class="lazyload" width="120" height="120" alt="Se {{artistConcerts.artist.name}} på MusikDK">
+						<time datetime="{{concert.date | amDateFormat:'d.MM.YY'}}">{{concert.date | amDateFormat:'MMM'}}<span>{{concert.date | amDateFormat:'DD'}}</span></time>
+					</div>	
+					<div class="clinfo">		 
+						<h3>{{concert.venue_name}}</h3>
+						<h4>{{concert.venue_city}}</h4>
+						<h5>{{concert.date | amDateFormat: 'hh:mm'}}</h5>
+					</div>
+
+					<a ng-if="concert.delivery_status == 'Normal'" href="{{concert.deeplink}}" target="_blank"><div class="ticgreen"></div></a>
+
+					<a ng-if="concert.delivery_status == 'Few'" href="{{concert.deeplink}}" target="_blank"><div class="ticyellow"></div></a>
+
+					<a ng-if="concert.delivery_status == 'Waiting list'" href="{{concert.deeplink}}" target="_blank"><div class="ticredwait"></div></a>
+	
+				</li>
+
+			</ul>
+		</div>
+
+		<div class="infotext fr ip">Koncerter importeres automatisk og er derfor ikke altid 100% korrekte.</div>

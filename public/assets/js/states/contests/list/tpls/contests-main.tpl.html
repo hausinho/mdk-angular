@@ -1,0 +1,39 @@
+<section id="cm">
+	<figure class="ti pr">
+		<img width="1300" height="541" ng-src="{{contests.recommend.artist.images.cover}}" id="coverbgblur" alt="contests.recommend.artist.formated_name" preatures="">
+		<a class="gotocomp" href="{{contests.recommend.contest_id}}"></a>
+		<figcaption class="metacomp2">
+			<h1 class="contestTxt">{{contests.recommend.title}}</h1>
+		</figcaption>
+	</figure>
+	<div class="pr">		
+		<header class="h">
+			<span class="bluedot" aria-hidden="true">&nbsp;&nbsp;</span>
+			<h2>Aktuelle konkurrencer</h2>
+		</header>
+		<div class="allComp">
+			<div class="ip2 c comp">
+				<ul>
+					<li ng-repeat="contest in contests.list" style="height:200px;">
+						<div>
+							<a ui-sref="contests.detail({contest_id: contest.contest_id})"> 
+							<div class="fl pr ct_img">
+								<!-- ARTIST IMAGE-->
+								
+								<img ng-if="contest.artist.images.thumb" class="lazyload" ng-src="{{contest.artist.images.thumb}}" width="200" height="200" alt="{{contest.artist.formated_name}}" />
+								<img ng-if="!contest.artist.images.thumb" class="lazyload" src="/assets/images/default_thumb.gif" width="200" height="200" />
+							</div>
+							<div class="ct_cnt" fadeout-txt>
+								<!-- TITLE-->
+								<h2>{{contest.title}}</h2>
+								<!-- DECRIPTION -->
+								<div class="ct_desc" ng-bind-html="contest.description"></div>
+							</div>
+							</a>		
+						</div>					
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>	
